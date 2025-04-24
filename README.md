@@ -46,7 +46,7 @@ Scripts in this repository currently support the following Operating Systems:
 If your base Docker image has curl installed, then the script can be executed easily with the following directives in your Dockerfile:
 
 ```dockerfile
-RUN curl -k https://raw.githubusercontent.com/MGMResorts/zscaler-ca-installer/refs/heads/main/install-zscaler-ca.sh | bash
+RUN curl -k https://raw.githubusercontent.com/jhagadorn-mgm/zscaler-ca-installer/refs/heads/main/install-zscaler-ca.sh | bash
 ```
 
 Change `bash` to `sh` if the image you are using does not have bash installed. Most images do, but some only use busybox which only provides `sh`.
@@ -54,7 +54,7 @@ Change `bash` to `sh` if the image you are using does not have bash installed. M
 If an image does not have curl installed by default, wget is typically present via either busybox or the wget utility itself. If this is the case, use the following directives instead.
 
 ```dockerfile
-RUN wget --no-check-certificate -O /tmp/install-zscaler-ca.sh https://raw.githubusercontent.com/MGMResorts/zscaler-ca-installer/refs/heads/main/install-zscaler-ca.sh && \
+RUN wget --no-check-certificate -O /tmp/install-zscaler-ca.sh https://raw.githubusercontent.com/jhagadorn-mgm/zscaler-ca-installer/refs/heads/main/install-zscaler-ca.sh && \
     bash /tmp/install-zscaler-ca.sh && \
     rm -f /tmp/install-zscaler-ca.sh
 ```
@@ -69,7 +69,7 @@ work properly.
 
 ```shell
 # The environment doesn't load properly if you invoke the command directly, which is why we use bash -c.
-colima ssh --profile <your__colima_instance_profile_name> -- /bin/bash -c 'curl -k https://raw.githubusercontent.com/MGMResorts/zscaler-ca-installer/refs/heads/main/install-zscaler-ca.sh | bash'
+colima ssh --profile <your__colima_instance_profile_name> -- /bin/bash -c 'curl -k https://raw.githubusercontent.com/jhagadorn-mgm/zscaler-ca-installer/refs/heads/main/install-zscaler-ca.sh | bash'
 ```
 
 Please note that you will still need to install the CA chain in any docker containers you utilize with colima for them to function properly with outgoing TLS connections.
